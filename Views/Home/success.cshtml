@@ -1,0 +1,46 @@
+﻿
+@* <h1>you have been logged in @ViewData["UserName"]! </h1>
+<h2>If you want to make changes to your profile details , Click the below button</h2>
+<a asp-controller="Home" asp-action="EditProfile">Change details</a>
+ *@
+ @model List<ContactUrl>
+<div class="card" style="width:400px">
+    @* <img class="card-img-top" src="img_avatar1.png" alt="Card image"> *@
+    <div class="card-body">
+        <h4 class="card-title"> @ViewData["UserName"]!</h4>
+        <p class="card-text">If you want to make changes to your profile details , Click the below button</p>
+        <a asp-controller="Home" asp-action="EditProfile" class="btn btn-primary">Change details</a>
+        <a asp-controller="Home" asp-action="logout" class="btn btn-primary">LOG OUT</a>
+         
+    </div>
+   
+</div>
+<a asp-controller="Contact" asp-action="Add" class="btn btn-primary">Add contact details</a>
+<table class="table table-bordered table-striped">
+    <th text-align="center">
+        Employee Contact details
+    </th>
+    <thread>
+       
+        <tr>
+            
+            <th>
+                ID
+            </th>
+            <th>Contact Name</th>
+            <th>Contact URL</th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach (var obj in Model)
+        {
+            <tr>
+                <td>@obj.Id</td>
+                <td>@obj.UrlName</td>
+                <td>@obj.UrlS</td>
+               <td> <a asp-controller="Contact" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary">Edit</a></td>
+                <td> <a asp-controller="Contact" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-primary">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
